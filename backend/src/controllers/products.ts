@@ -3,7 +3,7 @@ import { Product } from '../models/Product';
 import { ConflictError } from '../errors/conflict-error';
 
 export const getProducts = async (
-  req: Request,
+  _req: Request,
   res: Response,
   next: NextFunction,
 ) => {
@@ -13,9 +13,9 @@ export const getProducts = async (
     // Убираем служебное поле __v, если оно есть
     const items = products.map(({ __v, ...rest }) => rest);
 
-    res.json({ items, total: items.length });
+    return res.status(201).json({ items, total: items.length });
   } catch (err) {
-    next(err);
+    return next(err);
   }
 };
 
@@ -28,12 +28,14 @@ export const createProduct = async (
     const product = await Product.create(req.body);
     const { __v, ...cleanProduct } = product.toObject();
 
-    res.json(cleanProduct);
+    return res.status(201).json(cleanProduct);
   } catch (err: any) {
     // MongoDB возвращает код 11000 при нарушении unique индекса
     if (err.code === 11000) {
       return next(new ConflictError('Товар с таким заголовком уже существует'));
     }
-    next(err);
+    return next(err);
   }
 };
+
+export default { getProducts, createProduct };

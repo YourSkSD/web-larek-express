@@ -17,7 +17,7 @@ node_modules
 # Typescript build
 dist
 #temp
-#.env
+.env
 
 # User uploads
 #images/

@@ -3,9 +3,9 @@ import { CelebrateError } from 'celebrate';
 
 export const errorHandler = (
   err: any,
-  req: Request,
+  _req: Request,
   res: Response,
-  next: NextFunction,
+  _next: NextFunction,
 ) => {
   // Определяем статус код
   const statusCode = err.statusCode || 500;
@@ -42,7 +42,7 @@ export const errorHandler = (
   }
 
   // Стандартный ответ
-  res.status(statusCode).json({ message });
+  return res.status(statusCode).json({ message });
 };
 
 export default { errorHandler };
