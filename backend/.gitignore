@@ -16,16 +16,16 @@ node_modules
 
 # Typescript build
 dist
-temp
-.env
+#temp
+#.env
 
 # User uploads
-images/
-!images/.gitkeep
+#images/
+#!images/.gitkeep
 
 request.log
 error.log
-public/images/*
-!public/images/.gitkeep
-temp/*
-!temp/.gitkeep
+#public/images/*
+#!public/images/.gitkeep
+#temp/*
+#!temp/.gitkeep
