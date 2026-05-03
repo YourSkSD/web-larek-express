@@ -13,7 +13,7 @@ export const getProducts = async (
     // Убираем служебное поле __v, если оно есть
     const items = products.map(({ __v, ...rest }) => rest);
 
-    return res.status(201).json({ items, total: items.length });
+    return res.status(200).json({ items, total: items.length });
   } catch (err) {
     return next(err);
   }
