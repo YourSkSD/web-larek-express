@@ -16,5 +16,16 @@ node_modules
 
 # Typescript build
 dist
-temp
+#temp
 .env
+
+# User uploads
+#images/
+#!images/.gitkeep
+
+request.log
+error.log
+#public/images/*
+#!public/images/.gitkeep
+#temp/*
+#!temp/.gitkeep
